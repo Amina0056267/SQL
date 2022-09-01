@@ -81,6 +81,12 @@ Each of the questions/tasks below can be answered using a `SELECT` query. When y
 -- group by divisions.name, matches.season
 -- order by max desc;
 
+SELECT division_code, season, SUM(fthg + ftag)
+FROM matches
+GROUP BY division_code, season
+ORDER BY sum DESC
+LIMIT 1;
+
 
 ```
 

@@ -44,15 +44,14 @@ Each of the questions/tasks below can be answered using a `SELECT` query. When y
 6) How many different teams have played in matches recorded in a French division?
 
 ```sql
-<! SELECT 
-
+<! SELECT COUNT (DISTINCT hometeam) FROM matches WHERE division_code = 'F1' or divison_code ='F2';
 
 ```
 
 7) Have Huddersfield played Swansea in the period covered?
 
 ```sql
-<!-- Copy solution here -->
+<!SELECT * FROM matches WHERE awayteam = 'Swansea' AND hometeam ='Huddersfielld';
 
 
 ```
@@ -60,7 +59,7 @@ Each of the questions/tasks below can be answered using a `SELECT` query. When y
 8) How many draws were there in the Eredivisie between 2010 and 2015?
 
 ```sql
-<!-- Copy solution here -->
+<!SELECT COUNT(*) FROM matches WHERE division_code = 'N1' AND (ftr = 'D' AND season BETWEEN 2010 AND 2015);
 
 
 ```
@@ -68,7 +67,7 @@ Each of the questions/tasks below can be answered using a `SELECT` query. When y
 9) Select the matches played in the Premier League in order of total goals scored from highest to lowest. Where there is a tie the match with more home goals should come first.
 
 ```sql
-<!-- Copy solution here -->
+<!SELECT * FROM matches WHERE (NOT ftr = 'D') AND divsion_code = 'E0' ORDER BY (fthg = ftag) DESC, fthg DESC;
 
 
 ```
@@ -76,7 +75,11 @@ Each of the questions/tasks below can be answered using a `SELECT` query. When y
 10) In which division and which season were the most goals scored?
 
 ```sql
-<!-- Copy solution here -->
+-- <! SELECT DISTINCT name season, max(fthg + ftag)
+-- from divisions divisions
+-- join matches matches on divisions.code = matches.division_code
+-- group by divisions.name, matches.season
+-- order by max desc;
 
 
 ```
